@@ -41,9 +41,11 @@ jobs:
         project_id: ${{ secrets.GCP_PROJECT_ID }}
         service_account_key: ${{ secrets.GCP_SA_KEY }}
         export_default_credentials: true
-    - name: Verify gcloud authentication
+    - name: Authenticate with gcloud
       run: |
-             gcloud auth list
+          echo "${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}" | gcloud auth activate-service-account --key-file=-
+          gcloud config set project ${{ secrets.GCP_PROJECT_ID }}
+          gcloud auth application-default login
     - name: Configure kubectl
       run: |
         gcloud container clusters get-credentials hello-cluster \
