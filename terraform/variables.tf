@@ -18,4 +18,4 @@ variable "zone" {
   description = "Zone for resources"
   type        = string
   default     = "europe-west1-b"
-}
+} #
