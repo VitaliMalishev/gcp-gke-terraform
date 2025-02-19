@@ -64,3 +64,10 @@ jobs:
     - name: Update deployment
       run: |
         kubectl set image deployment/hello-server hello-app=${{ env.IMAGE_NAME }}:${{ github.sha }}
+    - name: Notify Telegram on failure
+      if: failure()
+      uses: appleboy/telegram-action@master
+      with:
+        to: ${{ secrets.TELEGRAM_CHAT_ID }}
+        token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        message: "🚨 Pipeline failed! Check the logs for details."
