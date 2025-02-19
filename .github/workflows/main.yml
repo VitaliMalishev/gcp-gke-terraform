@@ -3,7 +3,8 @@ name: Build and Deploy
 on:
   push:
     branches: [ main ]
-
+    paths:
+      - 'app/main.go'
 env:
   IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/hello-app
 
