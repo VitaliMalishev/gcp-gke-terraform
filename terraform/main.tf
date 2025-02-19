@@ -1,25 +1,27 @@
-# main.tf
-
 provider "google" {
-  credentials = "${var.GOOGLE_CREDENTIALS}"
+  
   project = var.project_id
   region  = var.region
 }
 
-provider "kubernetes" {
-  host  = "https://${google_container_cluster.hello_cluster.endpoint}"
-  token = data.google_client_config.default.access_token
-  cluster_ca_certificate = base64decode(
-    google_container_cluster.hello_cluster.master_auth[0].cluster_ca_certificate,
-  )
+data "google_client_config" "default" {}
+
+data "google_container_cluster" "hello_cluster" {
+  name     = google_container_cluster.hello_cluster.name
+  location = var.zone
 }
 
-data "google_client_config" "default" {}
+provider "kubernetes" {
+  host                   = "https://${data.google_container_cluster.hello_cluster.endpoint}"
+  token                  = data.google_client_config.default.access_token
+  cluster_ca_certificate = base64decode(data.google_container_cluster.hello_cluster.master_auth[0].cluster_ca_certificate)
+}
 
 resource "google_container_cluster" "hello_cluster" {
   name               = "hello-cluster"
   location           = var.zone
   initial_node_count = 1
+  deletion_protection = false
 
   node_config {
     machine_type = "e2-small"
@@ -32,6 +34,9 @@ resource "google_container_cluster" "hello_cluster" {
 resource "kubernetes_deployment" "hello_server" {
   metadata {
     name = "hello-server"
+    labels = {
+      app = "hello-server"
+    }
   }
 
   spec {
@@ -52,12 +57,12 @@ resource "kubernetes_deployment" "hello_server" {
 
       spec {
         container {
-          image = "image = "vitalikmal/golangt:${var.app_version}""
+          image = "vitalikmal/hello-app:${var.app_version}" 
           name  = "hello-app"
           env {
             name  = "APP_VERSION"
             value = var.app_version
-  }
+          }
           port {
             container_port = 8080
           }
@@ -76,7 +81,7 @@ resource "kubernetes_service" "hello_service" {
 
   spec {
     selector = {
-      app = kubernetes_deployment.hello_server.spec.0.template.0.metadata[0].labels.app
+      app = "hello-server" 
     }
 
     port {

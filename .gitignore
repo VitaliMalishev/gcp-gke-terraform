@@ -1,0 +1,33 @@
+# Бинарные файлы Go
+bin/
+*.exe
+*.out
+*.test
+
+# Кэш Go-модулей
+go.sum
+go.mod
+
+# Логи и временные файлы
+*.log
+*.tmp
+
+# Файлы IDE и редакторов
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Docker
+docker/data/
+docker/.env
+
+# Terraform
+terraform/.terraform/
+terraform/terraform.tfstate*
+terraform/.terraform.lock.hcl
+
+# Helm
+helm/hello-app/charts/
+helm/hello-app/tmp/
+helm/hello-app/.helmignore

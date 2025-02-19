@@ -4,8 +4,9 @@ variable "app_version" {
   default     = "latest"
 }
 variable "project_id" {
-  description = "final-448512"
+  description = "project GCP"
   type        = string
+  default     = "final-448512"
 }
 
 variable "region" {
