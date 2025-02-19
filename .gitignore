@@ -4,9 +4,7 @@ bin/
 *.out
 *.test
 
-# Кэш Go-модулей
-go.sum
-go.mod
+
 
 # Логи и временные файлы
 *.log
