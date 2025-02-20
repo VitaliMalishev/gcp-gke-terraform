@@ -24,7 +24,7 @@ func main() {
             version = readVersion()
         }
 
-        response := fmt.Sprintf("Версия приложения последняя  !!! \nVersion: %s\nHostname: %s\n", version, hostname)
+        response := fmt.Sprintf("Версия приложения последняя   \nVersion: %s\nHostname: %s\n", version, hostname)
         fmt.Fprint(w, response)
     })
 
