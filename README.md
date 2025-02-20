@@ -16,12 +16,5 @@ Telegram при ошибке с логами ошибки.
 
 ![alt text](TLBBRi8m4BpdArRS8NzGKHwb5LLLGMyL1-CuniBE8Z-AKDL_RrXJXoJDpRCxtXdFUkeyipuOdPqOFp8fOBHI_ZdiOIDEE8Bl3E3JC5LD9EwkvmNoex2bqeBWH2f_2FlyZFPOQZoxl10dZPV9nMWYH6X4vLtkXRMiH6jockZBNVQJzOGVkLTOkPlsB2XTm8jXCWg-1tS0Zn1z.png)
 
-Развертывание в GKE
-Настройка Terraform:
-
-Создайте terraform.tfvars в папке terraform.
-
-Укажите значения переменных:
-
 Итог
 Этот проект демонстрирует современный подход к CI/CD с использованием Terraform, Docker, GKE и GitHub Actions. Он включает уведомления и централизованное логирование, что делает процесс разработки и эксплуатации более удобным и безопасным.
