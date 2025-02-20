@@ -38,7 +38,7 @@ resource "google_container_cluster" "hello_cluster" {
   logging_service    = "logging.googleapis.com/kubernetes"  #  Cloud Logging
   monitoring_service = "monitoring.googleapis.com/kubernetes"  #   Cloud Monitoring
   node_config {
-    machine_type = "e2-small"
+    machine_type = var.machine_type
     oauth_scopes = [
       "https://www.googleapis.com/auth/cloud-platform"
     ]
