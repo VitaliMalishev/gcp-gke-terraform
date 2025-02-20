@@ -71,7 +71,7 @@ resource "kubernetes_deployment" "hello_server" {
 
       spec {
         container {
-          image = "vitalikmal/hello-app:${var.app_version}" 
+          image = ""${var.image_repository}:${var.app_version}"" 
           name  = "hello-app"
           env {
             name  = "APP_VERSION"
