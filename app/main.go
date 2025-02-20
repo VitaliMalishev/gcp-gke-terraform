@@ -8,7 +8,7 @@ import (
 )
 
 func readVersion() string {
-    version := "1.0" // Значение по умолчанию
+    version := "1.0" 
     data, err := ioutil.ReadFile("VERSION")
     if err == nil {
         version = string(data)
@@ -24,7 +24,7 @@ func main() {
             version = readVersion()
         }
 
-        response := fmt.Sprintf("Версия приложения последняя !  \nVersion: %s\nHostname: %s\n", version, hostname)
+        response := fmt.Sprintf("Версия приложения последняя !!!  \nVersion: %s\nHostname: %s\n", version, hostname)
         fmt.Fprint(w, response)
     })
 
