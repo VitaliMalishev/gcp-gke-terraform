@@ -86,8 +86,12 @@ jobs:
             });
             return logs;
 
-      - name: Notify Telegram on failure
-        if: failure()
+  notify-on-failure:
+    needs: [build-and-push, deploy-to-gke]
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify Telegram
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
@@ -102,5 +106,5 @@ jobs:
 
             **Error Logs:**
             ```
-            ${{ steps.get_error_logs.outputs.logs }}
+            ${{ needs.deploy-to-gke.outputs.logs || needs.build-and-push.outputs.logs }}
             ```
