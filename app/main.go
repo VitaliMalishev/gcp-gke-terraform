@@ -24,7 +24,7 @@ func main() {
             version = readVersion()
         }
 
-        response := fmt.Sprintf(" GitHUB  \nVersion: %s\nHostname: %s\n", version, hostname)
+        response := fmt.Sprintf(" GiUB  \nVersion: %s\nHostname: %s\n", version, hostname)
         fmt.Fprint(w, response)
     })
 
