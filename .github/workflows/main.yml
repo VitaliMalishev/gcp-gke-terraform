@@ -29,7 +29,7 @@ jobs:
           push: true
           tags: |
            
-            ${{ env.IMAGE_NAME }}:${{ github.run_id }}
+            ${{ env.IMAGE_NAME }}:latest
 
   deploy-to-gke:
     needs: build-and-push
