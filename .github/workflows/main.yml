@@ -66,12 +66,7 @@ jobs:
         run: |
           kubectl set image deployment/hello-server hello-app=${{ env.IMAGE_NAME }}:${{ github.sha }}
 
-      - name: Rollback on failure
-        if: failure()
-        run: |
-          kubectl rollout undo deployment/hello-server
-          kubectl rollout status deployment/hello-server
-
+      
       - name: Get error logs
         if: failure()
         id: get_error_logs
