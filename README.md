@@ -2,6 +2,16 @@ Hello App
 
 Это пример Go-приложения, которое развертывается в Google Kubernetes Engine (GKE) с использованием Terraform, Docker и CI/CD через GitHub Actions. Проект включает централизованное логирование, управление версиями, автоматическое увеличение версии Docker-образа, уведомления по email при успешной сборке и уведомления в Telegram при ошибке.
 
+Используемые инструменты:
+
+Terraform
+
+Google Cloud SDK
+
+Docker
+
+Git
+
 Основные функции
 
 CI/CD: GitHub Actions автоматически собирает Docker-образ, публикует его в Docker Hub и развертывает в GKE.
