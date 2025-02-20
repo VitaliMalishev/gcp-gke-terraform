@@ -104,7 +104,4 @@ jobs:
             - Job: ${{ github.job }}
             - Run ID: ${{ github.run_id }}
 
-            **Error Logs:**
-            ```
-            ${{ needs.deploy-to-gke.outputs.logs || needs.build-and-push.outputs.logs }}
-            ```
+            
