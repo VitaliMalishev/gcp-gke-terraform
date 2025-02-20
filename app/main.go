@@ -1,22 +1,32 @@
 package main
 
 import (
-	"fmt"
-	"net/http"
-	"os"
+    "fmt"
+    "net/http"
+    "os"
+    "io/ioutil"
 )
 
-func main() {
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		hostname, _ := os.Hostname()
-		version := os.Getenv("APP_VERSION")
-		if version == "" {
-			version = "1.0"
-		}
-		
-		response := fmt.Sprintf("Версия приложения последняя !  \nVersion: %s\nHostname: %s\n", version, hostname)
-		fmt.Fprint(w, response)
-	})
+func readVersion() string {
+    version := "1.0" // Значение по умолчанию
+    data, err := ioutil.ReadFile("VERSION")
+    if err == nil {
+        version = string(data)
+    }
+    return version
+}
 
-	http.ListenAndServe(":8080", nil)
+func main() {
+    http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+        hostname, _ := os.Hostname()
+        version := os.Getenv("APP_VERSION")
+        if version == "" {
+            version = readVersion()
+        }
+
+        response := fmt.Sprintf("Версия приложения последняя !  \nVersion: %s\nHostname: %s\n", version, hostname)
+        fmt.Fprint(w, response)
+    })
+
+    http.ListenAndServe(":8080", nil)
 }
