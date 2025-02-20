@@ -23,23 +23,5 @@ Telegram при ошибке с логами ошибки.
 
 Укажите значения переменных:
 
-hcl
-Copy
-project_id = "your-gcp-project-id"
-region = "us-west1"
-zone = "us-west1-a"
-app_version = "your-app-version"
-Инициализация Terraform:
-
-bash
-Copy
-cd deployments/terraform
-terraform init
-Развертывание инфраструктуры:
-
-bash
-Copy
-terraform apply
-
 Итог
 Этот проект демонстрирует современный подход к CI/CD с использованием Terraform, Docker, GKE и GitHub Actions. Он включает уведомления и централизованное логирование, что делает процесс разработки и эксплуатации более удобным и безопасным.
