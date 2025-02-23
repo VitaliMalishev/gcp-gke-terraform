@@ -6,7 +6,7 @@ on:
     paths:
       - 'app/main.go'
 env:
-  IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME1 }}/hello-app
+  IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/hello-app
 
 jobs:
   build-and-push:
